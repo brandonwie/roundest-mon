@@ -12,7 +12,11 @@ export const appRouter = router({
 
       const pokemon = api.getPokemonById(input.id);
 
-      return pokemon;
+      const result = pokemon.then((p) => {
+        return { name: p.name, sprites: p.sprites };
+      });
+
+      return result;
     }),
 });
 
