@@ -2,6 +2,12 @@ import { httpBatchLink } from '@trpc/client';
 import { createTRPCNext } from '@trpc/next';
 import type { AppRouter } from '../server/routers/_app';
 
+import { type inferReactQueryProcedureOptions } from '@trpc/react-query';
+import { inferRouterInputs } from '@trpc/server';
+
+export type ReactQueryOptions = inferReactQueryProcedureOptions<AppRouter>;
+export type RouterInputs = inferRouterInputs<AppRouter>;
+
 function getBaseUrl() {
   if (typeof window !== 'undefined')
     // browser should use relative path
